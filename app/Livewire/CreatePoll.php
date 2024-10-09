@@ -8,7 +8,7 @@ class CreatePoll extends Component
 {
     public $title;
 
-    public $options = [''];
+    public $options = [];
 
     public function render()
     {
@@ -18,6 +18,12 @@ class CreatePoll extends Component
     public function addOption()
     {
         $this->options[] = '';
+    }
+
+    public function removeOption($index)
+    {
+        unset($this->options[$index]);
+        $this->options = array_values($this->options);
     }
 
     // public function mount() {

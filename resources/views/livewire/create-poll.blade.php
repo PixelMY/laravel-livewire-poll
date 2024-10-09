@@ -5,13 +5,18 @@
 		Current title: {{ $title }}
 
 		<div class="mb-4">
-			<button class="btn mt-4" wire:click.prevent="addOption">Add Option</button>
+			<button class="btn mt-4" wire:click.prevent="addOption()">Add Option</button>
 		</div>
 
-		<div class="mt-4">
+		<div>
 			@foreach ($options as $index => $option)
 				<div class="mb-4">
-					{{ $index }} - {{ $option }}
+					<label>Option {{ $index + 1 }}</label>
+
+					<div class="flex gap-2">
+						<input type="text" wire:model.live="options.{{ $index }}" />
+						<button class="btn" wire:click.prevent="removeOption({{ $index }})">Remove</button>
+					</div>
 				</div>
 			@endforeach
 		</div>
